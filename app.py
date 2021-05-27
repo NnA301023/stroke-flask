@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 #load saved model
-model = pickle.load(open("D:/project_py_web/FREELANCER/Stroke Prediction_/model.pkl", "rb"))
+model = pickle.load(open("model.pkl", "rb"))
 
 app = Flask(__name__,template_folder='template')
 @app.route("/")
