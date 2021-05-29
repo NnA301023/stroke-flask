@@ -41,16 +41,16 @@
 				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 					  <ul class="navbar-nav inline">
 							<li class="nav-item me-4">
-								<a class="nav-link fs-5 fw-bold" href="index.html">Home</a>
+								<a class="nav-link fs-5 fw-bold" href="template/index.html">Home</a>
 							</li>
 							<li class="nav-item me-4">
-								<a class="nav-link fs-5 fw-bold" href="Exercise.html">Exercise</a>
+								<a class="nav-link fs-5 fw-bold" href="template/Exercise.html">Exercise</a>
 							</li>
 							<li class="nav-item me-4">
-								<a class="nav-link fs-5 fw-bold" href="Module.html">Module</a>
+								<a class="nav-link fs-5 fw-bold" href="template/Module.html">Module</a>
 							</li>
 							<li class="nav-item me-4">
-								<a class="nav-link fs-5 fw-bold" href="Health.html">Health</a>
+								<a class="nav-link fs-5 fw-bold" href="template/Health.html">Health</a>
 							</li>
 					  </ul>
 				</div>
@@ -60,7 +60,7 @@
 		<div class="container mt-2 p-5 fs-5 d-flex justify-content-center text-dark">
 				<div class="col-sm-6 p-4 border rounded-3 shadow-sm bg-green1">
 					<h1 class="fw-bold mb-4 text-center">Stroke Prediction</h1>
-					<form action="{{url_for('predict')}}" method="post" id="form" >
+					<form action="/predict" method="post" id="form" >
 						<table class="table">
 							<tbody>
 								<tr>
@@ -141,7 +141,7 @@
 						<center>
 							<button type="submit" class="btn btn-success fs-5 fw-bold text-white" form="form" value="Submit">Submit</button>
 							<div class="predict">
-								{{[prediction_text]}}
+								{{prediction_text}}
 							</div>
 						</center>
 					</form>
