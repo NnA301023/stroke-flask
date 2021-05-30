@@ -13,7 +13,7 @@ def load_pkl(fname):
     with open(fname, 'rb') as f:
         obj = pickle.load(f)
     return obj
-#model = load_pkl(model_url)
+model = load_pkl(model_url)
 
 result = {'PHASE 1': ['Breathing Exercise',
   'Breathing Exercise',
@@ -162,7 +162,7 @@ def predict():
         disease.append("DIABETES")
         num_disease.append(4)
 
-    pred = 1#randint(0,2)
+    pred = randint(0,2)
     return render_template('index.html',prediction_text=pred, dis=",".join(disease))
 
 @app.route("/expert")
