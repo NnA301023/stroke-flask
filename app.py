@@ -78,7 +78,7 @@ def predict():
         disease.append("DIABETES")
         num_disease.append(4)
 
-    pred = randint(0,5)
+    pred = 1#randint(0,5)
     return render_template('index.html',prediction_text=pred, dis=",".join(disease))
 
 @app.route("/expert")
