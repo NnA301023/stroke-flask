@@ -40,7 +40,6 @@ result = {'PHASE 1': ['Breathing Exercise', 'Breathing Exercise', 'Breathing Exe
 
 
 num_disease = []
-nums = list(set(num_disease))
 app = Flask(__name__)
 @app.route("/")
 def main():
@@ -97,7 +96,7 @@ def expert_review():
     else:
         PHASE = FASE
     HEALTH = choice([str(x)+"%" for x in range(30,90,10)])
-    EXERCISE = [result[PHASE][x] for x in nums]
+    EXERCISE = [result[PHASE][x] for x in list(set(nums))]
     return render_template("expert-review.html", judul="Expert Review", ph=PHASE, health=HEALTH, exe=EXERCISE)
 
 @app.route("/exercise")
@@ -113,4 +112,4 @@ def module():
     return render_template("Module.html", judul="Module")
     
 if __name__ == '__main__':
-	app.run(debug=True)
+    app.run(debug=True)
