@@ -13,7 +13,7 @@ def load_pkl(fname):
     with open(fname, 'rb') as f:
         obj = pickle.load(f)
     return obj
-#model = load_pkl(model_url)
+model = load_pkl(model_url)
 
 result = {'PHASE 1': ['Breathing Exercise', 'Breathing Exercise', 'Breathing Exercise', 'Breathing Exercise', 'Breathing Exercise'],
  'PHASE 2': ['Light Exercise', 'Light Exercise', 'Light Exercise', 'Light Exercise', 'Light Exercise'],
@@ -38,8 +38,9 @@ result = {'PHASE 1': ['Breathing Exercise', 'Breathing Exercise', 'Breathing Exe
  'PHASE 21':['Return to work assistant', 'Speech Training Exercises (Lip Buzing , Vowal and consonant sounds exercises)', 'Return to work assistant', 'Return to work assistant', 'Speech Training Exercises (Lip Buzing , Vowal and consonant sounds exercises)'],
  'PHASE 22':['Rest', 'Return to work assistant', 'Rest', 'Rest', 'Return to work assistant']}
 
-disease = []
+
 num_disease = []
+nums = list(set(num_disease))
 app = Flask(__name__)
 @app.route("/")
 def main():
@@ -47,6 +48,7 @@ def main():
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    disease = []
     smoke = request.form["smoke"]
     if smoke == "smokes":
         disease.append("SMOKER")
@@ -80,8 +82,6 @@ def predict():
 
     pred = 1#randint(0,5)
     return render_template('index.html',prediction_text=pred, dis=",".join(disease))
-    disease.clear()
-    num_disease.clear()
 
 @app.route("/expert")
 def expert():
@@ -97,7 +97,7 @@ def expert_review():
     else:
         PHASE = FASE
     HEALTH = choice([str(x)+"%" for x in range(30,90,10)])
-    EXERCISE = [result[PHASE][x] for x in num_disease]
+    EXERCISE = [result[PHASE][x] for x in nums]
     return render_template("expert-review.html", judul="Expert Review", ph=PHASE, health=HEALTH, exe=EXERCISE)
 
 @app.route("/exercise")
