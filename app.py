@@ -80,6 +80,8 @@ def predict():
 
     pred = 1#randint(0,5)
     return render_template('index.html',prediction_text=pred, dis=",".join(disease))
+    disease.clear()
+    num_disease.clear()
 
 @app.route("/expert")
 def expert():
