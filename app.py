@@ -96,7 +96,7 @@ def expert_review():
     else:
         PHASE = FASE
     HEALTH = choice([str(x)+"%" for x in range(30,90,10)])
-    EXERCISE = [result[PHASE][x] for x in list(set(num_disease))]
+    EXERCISE = [result[PHASE][x] for x in num_disease]
     return render_template("expert-review.html", judul="Expert Review", ph=PHASE, health=HEALTH, exe=EXERCISE)
 
 @app.route("/exercise")
